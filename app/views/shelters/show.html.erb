@@ -2,3 +2,4 @@
 
 <p><%= @shelter.address %></p>
 <p><%= @shelter.city %>, <%= @shelter.state %>, <%= @shelter.zip %></p>
+<p><%= link_to "Edit #{@shelter.name}", "/shelters/#{@shelter.id}/edit" %></p>

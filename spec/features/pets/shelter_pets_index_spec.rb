@@ -39,7 +39,7 @@ RSpec.describe "shelter pets index page" do
         expect(page).to have_content(pet_1.name)
         expect(page).to have_content(pet_1.approximate_age)
         expect(page).to have_content(pet_1.sex)
-        expect(page).to have_content(pet_1.current_shelter)
+        expect(page).to_not have_content(pet_1.current_shelter)
       end
 
       within "#pet-#{pet_3.id}" do
@@ -47,7 +47,7 @@ RSpec.describe "shelter pets index page" do
         expect(page).to have_content(pet_3.name)
         expect(page).to have_content(pet_3.approximate_age)
         expect(page).to have_content(pet_3.sex)
-        expect(page).to have_content(pet_3.current_shelter)
+        expect(page).to_not have_content(pet_3.current_shelter)
       end
 
       expect(page).to_not have_css("img[src*='#{pet_2.image}']")

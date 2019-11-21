@@ -5,6 +5,7 @@
     <ul>
       <li><%= shelter.name %></li>
       <li><%= link_to "Edit #{shelter.name}", "/shelters/#{shelter.id}/edit" %></li>
+      <li><%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete %></li>
     </ul>
   </section>
 <% end %>

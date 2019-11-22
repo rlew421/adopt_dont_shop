@@ -63,5 +63,23 @@ RSpec.describe "pets index page" do
       click_link "Edit #{@alfred.name}"
       expect(current_path).to eq("/pets/#{@alfred.id}/edit")
     end
+
+    it "I see a delete link next to each pet that allows me to delete that pet" do
+      within "#pet-#{@henri.id}" do
+        expect(page).to have_link("Delete #{@henri.name}")
+      end
+      click_link "Delete #{@henri.name}"
+      expect(current_path).to eq("/pets")
+      expect(page).to_not have_content(@henri.name)
+
+      visit '/pets'
+
+      within "#pet-#{@alfred.id}" do
+        expect(page).to have_link("Delete #{@alfred.name}")
+      end
+      click_link "Delete #{@alfred.name}"
+      expect(current_path).to eq("/pets")
+      expect(page).to_not have_content(@alfred.name)
+    end
   end
 end

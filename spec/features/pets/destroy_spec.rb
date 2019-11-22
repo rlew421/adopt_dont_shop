@@ -7,8 +7,7 @@ RSpec.describe "when I visit a pet show page" do
                         name: 'Henri',
                         description: "With his heartwarming wrinkles and furrowed brow, he'll slobber his way into your heart!",
                         approximate_age: 5,
-                        sex: 'Male',
-                        current_shelter: 'Boulder Bulldog Rescue')
+                        sex: 'Male')
 
     visit "/pets/#{henri.id}"
 

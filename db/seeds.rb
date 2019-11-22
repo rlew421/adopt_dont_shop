@@ -16,19 +16,16 @@ henri = boulder_bulldog_rescue.pets.create(image: "https://scontent-den4-1.xx.fb
                     name: 'Henri',
                     description: "With his heartwarming wrinkles and furrowed brow, he'll slobber his way into your heart!",
                     approximate_age: 5,
-                    sex: 'Male',
-                    current_shelter: 'Boulder Bulldog Rescue')
+                    sex: 'Male')
 
 alfred = howlz_n_jowlz.pets.create(image: "https://scontent-den4-1.xx.fbcdn.net/v/t31.0-8/14608760_10153942326162816_2748710450820779939_o.jpg?_nc_cat=100&_nc_oc=AQnrfoKEaHR6I5dtefDwT7AGx_jSyJbGEabXvtbS9jMf2eGvl4_plvsK3eSmKjECppM&_nc_ht=scontent-den4-1.xx&oh=358dd965255af229bdc5ea8bb5090fca&oe=5E4AA5BB",
                     name: 'Alfred',
                     description: "Truly a beautiful wrinkly boi!",
                     approximate_age: 2,
-                    sex: 'Male',
-                    current_shelter: "Howlz 'n Jowlz")
+                    sex: 'Male')
 
 toast = boulder_bulldog_rescue.pets.create(image: "https://i.pinimg.com/564x/4b/0c/99/4b0c99ace72fdfc65b2853fa14d41a8b.jpg",
                     name: 'Toast',
                     description: "She snorts, she farts, she's sweeter than French toast!",
                     approximate_age: 4,
-                    sex: 'Female',
-                    current_shelter: "Boulder Bulldog Rescue")
+                    sex: 'Female')

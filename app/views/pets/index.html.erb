@@ -10,7 +10,7 @@
       <% if @shelter %>
         <p><%= link_to "Edit #{pet.name}", "/shelters/#{pet.shelter.id}/pets/#{pet.id}/edit" %></p>
       <% else %>
-        <li>Current Shelter: <%= pet.shelter.name %></li>
+        <li>Current Shelter: <%= link_to "#{pet.shelter.name}" %></li>
         <p><%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit" %></p>
       <% end %>
       <p><%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %></p>

@@ -10,6 +10,7 @@
       <% unless @shelter %>
         <li>Current Shelter: <%= pet.current_shelter %></li>
       <% end %>
+      <p><%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit" %></p>
     </ul>
   </section>
 <% end %>

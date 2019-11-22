@@ -10,10 +10,9 @@ describe "shelter index page" do
       visit '/shelters'
     end
     it "I see the name of each shelter in the system" do
-
-      expect(page).to have_content(@shelter_1.name)
-      expect(page).to have_content(@shelter_2.name)
-      expect(page).to have_content(@shelter_3.name)
+      expect(page).to have_link(@shelter_1.name)
+      expect(page).to have_link(@shelter_2.name)
+      expect(page).to have_link(@shelter_3.name)
     end
 
     it "I see an edit link next to each shelter that allows me to edit the shelter through the edit form" do

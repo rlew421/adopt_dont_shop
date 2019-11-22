@@ -27,13 +27,13 @@ RSpec.describe "pets index page" do
     - approximate age
     - sex
     - name of the shelter where the pet is currently located" do
-
       within "#pet-#{@henri.id}" do
         expect(page).to have_css("img[src*='#{@henri.image}']")
         expect(page).to have_content("Name: #{@henri.name}")
         expect(page).to have_content("Age: #{@henri.approximate_age}")
         expect(page).to have_content("Sex: #{@henri.sex}")
         expect(page).to have_content("Current Shelter: #{@henri.shelter.name}")
+        expect(page).to have_link("#{@henri.shelter.name}")
       end
 
       within "#pet-#{@alfred.id}" do
@@ -42,6 +42,7 @@ RSpec.describe "pets index page" do
         expect(page).to have_content("Age: #{@alfred.approximate_age}")
         expect(page).to have_content("Sex: #{@alfred.sex}")
         expect(page).to have_content("Current Shelter: #{@alfred.shelter.name}")
+        expect(page).to have_link("#{@alfred.shelter.name}")
       end
     end
 

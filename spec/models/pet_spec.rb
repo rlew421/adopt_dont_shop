@@ -6,7 +6,6 @@ describe Pet, type: :model do
     it {should validate_presence_of(:name)}
     it {should validate_presence_of(:approximate_age)}
     it {should validate_presence_of(:sex)}
-    it {should validate_presence_of(:current_shelter)}
     it {should validate_presence_of(:description)}
     it {should validate_inclusion_of(:adoptable?).in_array([true,false])}
   end

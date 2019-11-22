@@ -10,22 +10,19 @@ RSpec.describe "shelter pets index page" do
         name: 'Henri',
         description: "With his heartwarming wrinkles and furrowed brow, he'll slobber his way into your heart!",
         approximate_age: 5,
-        sex: 'Male',
-        current_shelter: 'Boulder Bulldog Rescue')
+        sex: 'Male')
 
       @pet_2 = @howlz_n_jowlz.pets.create(image: "https://scontent-den4-1.xx.fbcdn.net/v/t31.0-8/14608760_10153942326162816_2748710450820779939_o.jpg?_nc_cat=100&_nc_oc=AQnrfoKEaHR6I5dtefDwT7AGx_jSyJbGEabXvtbS9jMf2eGvl4_plvsK3eSmKjECppM&_nc_ht=scontent-den4-1.xx&oh=358dd965255af229bdc5ea8bb5090fca&oe=5E4AA5BB",
         name: 'Alfred',
         description: "Truly a beautiful wrinkly boi!",
         approximate_age: 2,
-        sex: 'Male',
-        current_shelter: "Howlz 'n Jowlz")
+        sex: 'Male')
 
       @pet_3 = @boulder_bulldog_rescue.pets.create(image: "https://i.pinimg.com/564x/4b/0c/99/4b0c99ace72fdfc65b2853fa14d41a8b.jpg",
         name: 'Toast',
         description: "She snorts, she farts, she's sweeter than French toast!",
         approximate_age: 4,
-        sex: 'Female',
-        current_shelter: "Boulder Bulldog Rescue")
+        sex: 'Female')
 
       visit "/shelters/#{@boulder_bulldog_rescue.id}/pets"
     end
@@ -41,7 +38,7 @@ RSpec.describe "shelter pets index page" do
         expect(page).to have_content(@pet_1.name)
         expect(page).to have_content(@pet_1.approximate_age)
         expect(page).to have_content(@pet_1.sex)
-        expect(page).to_not have_content(@pet_1.current_shelter)
+        expect(page).to_not have_content(@pet_1.shelter.name)
       end
 
       within "#pet-#{@pet_3.id}" do
@@ -49,13 +46,13 @@ RSpec.describe "shelter pets index page" do
         expect(page).to have_content(@pet_3.name)
         expect(page).to have_content(@pet_3.approximate_age)
         expect(page).to have_content(@pet_3.sex)
-        expect(page).to_not have_content(@pet_3.current_shelter)
+        expect(page).to_not have_content(@pet_3.shelter.name)
       end
 
       expect(page).to_not have_css("img[src*='#{@pet_2.image}']")
       expect(page).to_not have_content(@pet_2.name)
       expect(page).to_not have_content(@pet_2.approximate_age)
-      expect(page).to_not have_content(@pet_2.current_shelter)
+      expect(page).to_not have_content(@pet_2.shelter.name)
     end
 
     it "I see an edit link next to each pet that allows me to edit that pet's information through the edit form" do

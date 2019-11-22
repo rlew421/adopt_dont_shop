@@ -10,16 +10,13 @@ RSpec.describe "pets index page" do
         name: 'Henri',
         description: "With his heartwarming wrinkles and furrowed brow, he'll slobber his way into your heart!",
         approximate_age: 5,
-        sex: 'Male',
-        current_shelter: 'Boulder Bulldog Rescue'
-      )
+        sex: 'Male')
 
       @alfred = @howlz_n_jowlz.pets.create(image: "https://scontent-den4-1.xx.fbcdn.net/v/t31.0-8/14608760_10153942326162816_2748710450820779939_o.jpg?_nc_cat=100&_nc_oc=AQnrfoKEaHR6I5dtefDwT7AGx_jSyJbGEabXvtbS9jMf2eGvl4_plvsK3eSmKjECppM&_nc_ht=scontent-den4-1.xx&oh=358dd965255af229bdc5ea8bb5090fca&oe=5E4AA5BB",
         name: 'Alfred',
         description: "Truly a beautiful wrinkly boi!",
         approximate_age: 2,
-        sex: 'Male',
-        current_shelter: "Howlz 'n Jowlz")
+        sex: 'Male')
 
       visit '/pets'
     end
@@ -36,7 +33,7 @@ RSpec.describe "pets index page" do
         expect(page).to have_content("Name: #{@henri.name}")
         expect(page).to have_content("Age: #{@henri.approximate_age}")
         expect(page).to have_content("Sex: #{@henri.sex}")
-        expect(page).to have_content("Current Shelter: #{@henri.current_shelter}")
+        expect(page).to have_content("Current Shelter: #{@henri.shelter.name}")
       end
 
       within "#pet-#{@alfred.id}" do
@@ -44,7 +41,7 @@ RSpec.describe "pets index page" do
         expect(page).to have_content("Name: #{@alfred.name}")
         expect(page).to have_content("Age: #{@alfred.approximate_age}")
         expect(page).to have_content("Sex: #{@alfred.sex}")
-        expect(page).to have_content("Current Shelter: #{@alfred.current_shelter}")
+        expect(page).to have_content("Current Shelter: #{@alfred.shelter.name}")
       end
     end
 

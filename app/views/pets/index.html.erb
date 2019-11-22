@@ -13,6 +13,7 @@
         <li>Current Shelter: <%= pet.current_shelter %></li>
         <p><%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit" %></p>
       <% end %>
+      <p><%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %></p>
     </ul>
   </section>
 <% end %>

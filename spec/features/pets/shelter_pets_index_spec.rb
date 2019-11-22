@@ -63,15 +63,15 @@ RSpec.describe "shelter pets index page" do
         expect(page).to have_link("Edit #{@pet_1.name}")
       end
       click_link "Edit #{@pet_1.name}"
-      expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
+      expect(current_path).to eq("/shelters/#{@boulder_bulldog_rescue.id}/pets/#{@pet_1.id}/edit")
 
-      visit '/pets'
+      visit "/shelters/#{@boulder_bulldog_rescue.id}/pets"
 
       within "#pet-#{@pet_3.id}" do
         expect(page).to have_link("Edit #{@pet_3.name}")
       end
       click_link "Edit #{@pet_3.name}"
-      expect(current_path).to eq("/pets/#{@pet_3.id}/edit")
+      expect(current_path).to eq("/shelters/#{@boulder_bulldog_rescue.id}/pets/#{@pet_3.id}/edit")
     end
   end
 end

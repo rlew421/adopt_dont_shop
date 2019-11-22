@@ -7,10 +7,12 @@
       <li>Name: <%= pet.name %></li>
       <li>Age: <%= pet.approximate_age %></li>
       <li>Sex: <%= pet.sex %></li>
-      <% unless @shelter %>
+      <% if @shelter %>
+        <p><%= link_to "Edit #{pet.name}", "/shelters/#{pet.shelter.id}/pets/#{pet.id}/edit" %></p>
+      <% else %>
         <li>Current Shelter: <%= pet.current_shelter %></li>
+        <p><%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit" %></p>
       <% end %>
-      <p><%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit" %></p>
     </ul>
   </section>
 <% end %>

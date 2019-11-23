@@ -33,11 +33,7 @@ RSpec.describe "pets index page" do
         expect(page).to have_content("Age: #{@henri.approximate_age}")
         expect(page).to have_content("Sex: #{@henri.sex}")
         expect(page).to have_content("Current Shelter: #{@henri.shelter.name}")
-        expect(page).to have_link("#{@henri.shelter.name}")
       end
-
-      click_link "#{@henri.shelter.name}"
-      expect(current_path).to eq("/shelters/#{@boulder_bulldog_rescue.id}")
 
       visit '/pets'
 
@@ -47,6 +43,20 @@ RSpec.describe "pets index page" do
         expect(page).to have_content("Age: #{@alfred.approximate_age}")
         expect(page).to have_content("Sex: #{@alfred.sex}")
         expect(page).to have_content("Current Shelter: #{@alfred.shelter.name}")
+      end
+    end
+
+    it "I can click on the the name of the pet's shelter and navigate to that shelter's show page" do
+      within "#pet-#{@henri.id}" do
+        expect(page).to have_link("#{@henri.shelter.name}")
+      end
+
+      click_link "#{@henri.shelter.name}"
+      expect(current_path).to eq("/shelters/#{@boulder_bulldog_rescue.id}")
+
+      visit '/pets'
+
+      within "#pet-#{@alfred.id}" do
         expect(page).to have_link("#{@alfred.shelter.name}")
       end
 
@@ -54,36 +64,48 @@ RSpec.describe "pets index page" do
       expect(current_path).to eq("/shelters/#{@howlz_n_jowlz.id}")
     end
 
+    it "I can click on the the name of the pet and navigate to that pet's show page" do
+      within "#pet-#{@henri.id}" do
+        click_link "#{@henri.name}"
+      end
+
+      expect(current_path).to eq("/pets/#{@henri.id}")
+
+      visit '/pets'
+
+      within "#pet-#{@alfred.id}" do
+        click_link "#{@alfred.name}"
+      end
+
+      expect(current_path).to eq("/pets/#{@alfred.id}")
+    end
+
     it "I see an edit link next to each pet that allows me to edit that pet's information through the edit form" do
       within "#pet-#{@henri.id}" do
-        expect(page).to have_link("Edit #{@henri.name}")
+        click_link "Edit"
       end
-      click_link "Edit #{@henri.name}"
       expect(current_path).to eq("/pets/#{@henri.id}/edit")
 
       visit '/pets'
 
       within "#pet-#{@alfred.id}" do
-        expect(page).to have_link("Edit #{@alfred.name}")
+        click_link "Edit"
       end
-      click_link "Edit #{@alfred.name}"
       expect(current_path).to eq("/pets/#{@alfred.id}/edit")
     end
 
     it "I see a delete link next to each pet that allows me to delete that pet" do
       within "#pet-#{@henri.id}" do
-        expect(page).to have_link("Delete #{@henri.name}")
+        click_link "Delete"
       end
-      click_link "Delete #{@henri.name}"
       expect(current_path).to eq("/pets")
       expect(page).to_not have_content(@henri.name)
 
       visit '/pets'
 
       within "#pet-#{@alfred.id}" do
-        expect(page).to have_link("Delete #{@alfred.name}")
+        click_link "Delete"
       end
-      click_link "Delete #{@alfred.name}"
       expect(current_path).to eq("/pets")
       expect(page).to_not have_content(@alfred.name)
     end

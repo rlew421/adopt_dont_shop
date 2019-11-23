@@ -55,36 +55,52 @@ RSpec.describe "shelter pets index page" do
       expect(page).to_not have_content(@pet_2.shelter.name)
     end
 
+    it "I can click on the the name of the pet in a shelter and navigate to that pet's show page" do
+      within "#pet-#{@pet_1.id}" do
+        click_link "#{@pet_1.name}"
+      end
+
+      expect(current_path).to eq("/shelters/#{@boulder_bulldog_rescue.id}/pets/#{@pet_1.id}")
+
+      visit "/shelters/#{@boulder_bulldog_rescue.id}/pets"
+
+      within "#pet-#{@pet_3.id}" do
+        click_link "#{@pet_3.name}"
+      end
+
+      expect(current_path).to eq("/shelters/#{@boulder_bulldog_rescue.id}/pets/#{@pet_3.id}")
+    end
+
     it "I see an edit link next to each pet that allows me to edit that pet's information through the edit form" do
       within "#pet-#{@pet_1.id}" do
-        expect(page).to have_link("Edit #{@pet_1.name}")
+        expect(page).to have_link("Edit")
+        click_link "Edit"
       end
-      click_link "Edit #{@pet_1.name}"
       expect(current_path).to eq("/shelters/#{@boulder_bulldog_rescue.id}/pets/#{@pet_1.id}/edit")
 
       visit "/shelters/#{@boulder_bulldog_rescue.id}/pets"
 
       within "#pet-#{@pet_3.id}" do
-        expect(page).to have_link("Edit #{@pet_3.name}")
+        expect(page).to have_link("Edit")
+        click_link "Edit"
       end
-      click_link "Edit #{@pet_3.name}"
       expect(current_path).to eq("/shelters/#{@boulder_bulldog_rescue.id}/pets/#{@pet_3.id}/edit")
     end
 
     it "I see a delete link next to each pet that allows me to delete that pet" do
       within "#pet-#{@pet_1.id}" do
-        expect(page).to have_link("Delete #{@pet_1.name}")
+        expect(page).to have_link("Delete")
+        click_link "Delete"
       end
-      click_link "Delete #{@pet_1.name}"
       expect(current_path).to eq("/pets")
       expect(page).to_not have_content(@pet_1.name)
 
       visit "/shelters/#{@boulder_bulldog_rescue.id}/pets"
 
       within "#pet-#{@pet_3.id}" do
-        expect(page).to have_link("Delete #{@pet_3.name}")
+        expect(page).to have_link("Delete")
+        click_link "Delete"
       end
-      click_link "Delete #{@pet_3.name}"
       expect(current_path).to eq("/pets")
       expect(page).to_not have_content(@pet_3.name)
     end

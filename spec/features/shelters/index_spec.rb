@@ -9,10 +9,13 @@ describe "shelter index page" do
 
       visit '/shelters'
     end
-    it "I see the name of each shelter in the system" do
+    it "I see the name of each shelter in the system as a link to the shelter's show page" do
       expect(page).to have_link(@shelter_1.name)
       expect(page).to have_link(@shelter_2.name)
       expect(page).to have_link(@shelter_3.name)
+
+      click_on "#{@shelter_3.name}"
+      expect(current_path).to eq("/shelters/#{@shelter_3.id}")
     end
 
     it "I see an edit link next to each shelter that allows me to edit the shelter through the edit form" do

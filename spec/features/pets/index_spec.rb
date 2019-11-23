@@ -36,6 +36,11 @@ RSpec.describe "pets index page" do
         expect(page).to have_link("#{@henri.shelter.name}")
       end
 
+      click_link "#{@henri.shelter.name}"
+      expect(current_path).to eq("/shelters/#{@boulder_bulldog_rescue.id}")
+
+      visit '/pets'
+
       within "#pet-#{@alfred.id}" do
         expect(page).to have_css("img[src*='#{@alfred.image}']")
         expect(page).to have_content("Name: #{@alfred.name}")
@@ -44,6 +49,9 @@ RSpec.describe "pets index page" do
         expect(page).to have_content("Current Shelter: #{@alfred.shelter.name}")
         expect(page).to have_link("#{@alfred.shelter.name}")
       end
+
+      click_link "#{@alfred.shelter.name}"
+      expect(current_path).to eq("/shelters/#{@howlz_n_jowlz.id}")
     end
 
     it "I see an edit link next to each pet that allows me to edit that pet's information through the edit form" do

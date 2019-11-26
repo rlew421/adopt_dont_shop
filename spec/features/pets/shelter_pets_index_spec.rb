@@ -15,7 +15,7 @@ RSpec.describe "shelter pets index page" do
       @pet_2 = @howlz_n_jowlz.pets.create(image: "https://scontent-den4-1.xx.fbcdn.net/v/t31.0-8/14608760_10153942326162816_2748710450820779939_o.jpg?_nc_cat=100&_nc_oc=AQnrfoKEaHR6I5dtefDwT7AGx_jSyJbGEabXvtbS9jMf2eGvl4_plvsK3eSmKjECppM&_nc_ht=scontent-den4-1.xx&oh=358dd965255af229bdc5ea8bb5090fca&oe=5E4AA5BB",
         name: 'Alfred',
         description: "Truly a beautiful wrinkly boi!",
-        approximate_age: 2,
+        approximate_age: 10,
         sex: 'Male')
 
       @pet_3 = @boulder_bulldog_rescue.pets.create(image: "https://i.pinimg.com/564x/4b/0c/99/4b0c99ace72fdfc65b2853fa14d41a8b.jpg",
@@ -103,6 +103,10 @@ RSpec.describe "shelter pets index page" do
       end
       expect(current_path).to eq("/pets")
       expect(page).to_not have_content(@pet_3.name)
+    end
+
+    it "I see a count of the number of pets at this shelter" do
+      expect(page).to have_content("Number of Pets at #{@boulder_bulldog_rescue.name}: 2")
     end
   end
 end

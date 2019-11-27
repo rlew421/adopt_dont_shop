@@ -2,9 +2,9 @@ class PetsController < ApplicationController
   def index
     if params[:shelter_id]
       @shelter = Shelter.find(params[:shelter_id])
-      @pets = @shelter.pets
+      @pets = @shelter.pets.sort_pets_by_status
     else
-      @pets = Pet.all
+      @pets = Pet.all.sort_pets_by_status
     end
   end
 

@@ -24,6 +24,26 @@ RSpec.describe "shelter pets index page" do
         approximate_age: 4,
         sex: 'Female')
 
+      @pet_4= @boulder_bulldog_rescue.pets.create(image: "https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fi.pinimg.com%2F564x%2Fc4%2F3e%2F7f%2Fc43e7f6a45aba8790a8c47d3a5d62ee8.jpg",
+        name: 'Botox',
+        description: 'So wrinkly!',
+        approximate_age: 7,
+        sex: 'Female',
+        adoptable?: false)
+
+      @pet_5 = @boulder_bulldog_rescue.pets.create!(image: "https://i.pinimg.com/564x/fa/f0/f1/faf0f151c420f2451bcd583de153c38b.jpg",
+        name: 'Pumbaa',
+        description: 'So wrinkly!',
+        approximate_age: 3,
+        sex: 'Male',
+        adoptable?: false)
+
+      @pet_6 = @boulder_bulldog_rescue.pets.create!(image: "https://i.pinimg.com/564x/07/34/10/0734102786dfa61651d5378a17476af6.jpg",
+          name: 'Winston',
+          description: "Truly a beautiful wrinkly boi!",
+          approximate_age: 8,
+          sex: 'Male')
+
       visit "/shelters/#{@boulder_bulldog_rescue.id}/pets"
     end
 
@@ -106,7 +126,15 @@ RSpec.describe "shelter pets index page" do
     end
 
     it "I see a count of the number of pets at this shelter" do
-      expect(page).to have_content("Number of Pets at #{@boulder_bulldog_rescue.name}: 2")
+      expect(page).to have_content("Number of Pets at #{@boulder_bulldog_rescue.name}: 5")
+    end
+
+    it "I see adoptable pets listed before pets whose adoption status is pending" do
+      expect(page.find_all('.pets')[0]).to have_content("#{@pet_1.name}")
+      expect(page.find_all('.pets')[1]).to have_content("#{@pet_3.name}")
+      expect(page.find_all('.pets')[2]).to have_content("#{@pet_6.name}")
+      expect(page.find_all('.pets')[3]).to have_content("#{@pet_4.name}")
+      expect(page.find_all('.pets')[4]).to have_content("#{@pet_5.name}")
     end
   end
 end

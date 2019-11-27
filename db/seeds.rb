@@ -12,6 +12,20 @@ boulder_bulldog_rescue = Shelter.create(name: "Boulder Bulldog Rescue", address:
 howlz_n_jowlz = Shelter.create(name: "Howlz 'n Jowlz", address: "7943 Furry Friend Drive", city: "Colorado Springs", state: "CO", zip: 80207)
 
 # Pets
+harry = boulder_bulldog_rescue.pets.create(image: "https://i.pinimg.com/564x/aa/38/27/aa38272dbdb0b6ee03c17420b7de3c2c.jpg",
+  name: 'Harry',
+  description: "Underbite for days.",
+  approximate_age: 6,
+  sex: 'Male',
+  adoptable?: false)
+
+tater_tot = boulder_bulldog_rescue.pets.create(image: "https://i.pinimg.com/564x/ac/4c/3f/ac4c3f848136a5f59b973943c113723f.jpg",
+    name: 'Tater Tot',
+    description: "The cutest potato!",
+    approximate_age: 8,
+    sex: 'Male',
+    adoptable?: false)
+    
 henri = boulder_bulldog_rescue.pets.create(image: "https://scontent-den4-1.xx.fbcdn.net/v/t1.0-9/69959835_377201229643201_4012713976726028288_o.jpg?_nc_cat=109&_nc_oc=AQlSsxr7ocJQdJ_USDptWwC1yYaFJvmQcqU1h1os4Kf4OXE8xOGfJWdUvVwrGyxSXYQ&_nc_ht=scontent-den4-1.xx&oh=b38ee308df03b9d760c5e720905eda0b&oe=5E4D6B16",
                     name: 'Henri',
                     description: "With his heartwarming wrinkles and furrowed brow, he'll slobber his way into your heart!",

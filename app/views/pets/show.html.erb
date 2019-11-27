@@ -1,16 +1,16 @@
-<h1><%= @pet.name %></h1>
-
-<ul>
-  <img src= <%= @pet.image %>>
-  <p><%= @pet.description %></p>
-  <li>Age: <%= @pet.approximate_age %></li>
-  <li>Sex: <%= @pet.sex %></li>
-  <% if @pet.adoptable? %>
-    <li>Status: Adoptable </li>
-  <% else %>
-    <li>Status: Adoption Pending </li>
-  <% end %>
-</ul>
-
-<p><%= link_to "Edit #{@pet.name}", "/pets/#{@pet.id}/edit" %></p>
-<p><%= link_to "Delete #{@pet.name}", "/pets/#{@pet.id}", method: :delete %></p>
+<center>
+  <section>
+    <h1><%= @pet.name %></h1>
+      <img src= <%= @pet.image %>>
+      <p><%= @pet.description %></p>
+      <p>Age: <%= @pet.approximate_age %></p>
+      <p>Sex: <%= @pet.sex %></p>
+      <% if @pet.adoptable? %>
+        <p>Status: Adoptable </p>
+      <% else %>
+        <p>Status: Adoption Pending </p>
+      <% end %>
+    <p><%= link_to "Edit #{@pet.name}", "/pets/#{@pet.id}/edit" %></p>
+    <p><%= link_to "Delete #{@pet.name}", "/pets/#{@pet.id}", method: :delete %></p>
+  </section>
+</center>
